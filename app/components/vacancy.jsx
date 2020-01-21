@@ -43,18 +43,19 @@ class Vacancy extends React.Component {
 
 class VacancyBlock extends React.Component {
     render() {
-        return <Link to={'/' + this.props.position.company_name.replace(/ /g, '-') + '-' +
-        this.props.position.position.replace(/ /g,'-')} target='_blank'>
-            <div className="vacancy-block">
+        return <div className="vacancy-block">
                 <div className="my-row">
                     <div>
                         <span className="position">{this.props.position.position}</span> <br/>
-                        <span className="company-name">{this.props.position.company_name}</span>
                     </div>
-                    <span className="date">{this.props.position.date}</span>
+                    <div>
+                        <a href={this.props.position.url} target="_blank"><input type="button" className="button" value="View" /></a>
+                    </div>
                 </div>
-            </div>
-        </Link>;
+				<a href={this.props.position.website} target="_blank"><span className="company-name">{this.props.position.company_name}</span></a>
+						<span className="date">{this.props.position.date}</span> <span className="company-name">Location: {this.props.position.location}</span>
+						<div className="description">decription</div>
+            </div>;
     }
 }
 
@@ -82,3 +83,12 @@ let VacList = connect(mapStateToProps, actions)(VacancyList),
     Vac = connect(mapStateToProps, actions)(Vacancy);
 
 module.exports = {VacList, Vac};
+
+/*
+
+<Link to={'/' + this.props.position.company_name.replace(/ /g, '-') + '-' +
+        this.props.position.position.replace(/ /g,'-')} target='_blank'>
+
+		<div className="description" dangerouslySetInnerHTML = {{__html: this.props.position.description}} />
+		
+		*/
