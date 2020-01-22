@@ -8,7 +8,6 @@ let reducer = function(state = {}) {
         };
     });
     let newState = Object.assign({}, { ...state, vacancies: vac });
-    window.localStorage.setItem('store', JSON.stringify(newState));
     return newState;
 };
 
