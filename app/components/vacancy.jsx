@@ -45,6 +45,10 @@ class VacancyBlock extends React.Component {
 }
 
 class VacancyList extends React.Component {
+	schowNewVacancies() {
+		window.scrollTo(0, 0);
+	}
+	
     render() {
         return <div className="vacancy-list">
             {
@@ -52,6 +56,9 @@ class VacancyList extends React.Component {
                     return <VacancyBlock position={vacancy} />
                 })
             }
+			<div id="bottom-block">
+				<input type="button" value={"show new vacancies"} onClick={this.schowNewVacancies.bind(this)}/>
+			</div>
         </div>;
     }
 }
